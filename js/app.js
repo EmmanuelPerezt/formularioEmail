@@ -58,7 +58,8 @@ function mostrarError(mensaje){
 
     formulario.appendChild(mensajeError)}
 }
-function formatearFormulario(){
+function formatearFormulario(e){
+    e.preventDefault()
     campoEmail.value=""
     campoAsunto.value=""
     campoMensaje.value=""
