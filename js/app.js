@@ -14,6 +14,7 @@ function eventListeners(){
      campoAsunto.addEventListener('blur',validarFormulario)
      campoMensaje.addEventListener('blur',validarFormulario)
      btnEliminar.addEventListener('click',formatearFormulario)
+     formulario.addEventListener('submit',enviarForm)
 
 }
 
@@ -21,6 +22,7 @@ function eventListeners(){
 
 function iniciarApp(){
     btnEnviar.disabled=true;
+    btnEnviar.classList.add('cursor-not-allowed','opacity-50')
 }
 function validarFormulario(e){
     //valida que no este vacio
@@ -63,4 +65,17 @@ function formatearFormulario(e){
     campoEmail.value=""
     campoAsunto.value=""
     campoMensaje.value=""
+}
+function enviarForm(e){
+    e.preventDefault()
+    const spinner= document.querySelector('#spinner')
+    spinner.style.display= 'flex'
+    
+    
+    setTimeout( ()=>{
+        spinner.style.display= 'none'
+        alert("enviado")   
+        formatearFormulario(e) 
+        iniciarApp()
+    },3000)
 }
